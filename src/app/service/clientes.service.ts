@@ -34,7 +34,7 @@ export class ClientesService {
 
   }
 
-  creaCliente(cliente:Product):Observable<Cliente>{
+  creaCliente(cliente:Cliente):Observable<Cliente>{
     console.log('object cliente: ' + cliente.nombre)
     console.log('apellido parterno: ' + cliente.apellidoPat)
     console.log('id: ' + cliente.id)

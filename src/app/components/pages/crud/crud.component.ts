@@ -157,25 +157,17 @@ export class CrudComponent implements OnInit {
 
             this._clienteService.creaCliente(this.cliente).subscribe(
               response => 
-              {
-                
-                swal.fire('Exito','Registro guardado con exito','success')
-              //  this.item=false;
-              // this.formCliente.reset();
-             /* this.clienteService.getClientes().subscribe(
-                //clientes => this.clientes = clientes
-                clientes => {  
-                  this.dataSource = new MatTableDataSource();  
-                 this.dataSource.data = clientes;
-                 this.length = clientes.length;
-                 this.dataSource.paginator = this.paginator;
-                 console.log(this.dataSource.data);
-                 //this.dataSource.sort = this.sort;
-                 console.log(this.dataSource.data);
-                
-                });*/
-                //);
-              }
+                {
+              
+              this.clientDialog = false;
+              
+                  swal.fire('Exito','Se guardo cliente con exito','success')
+                  this._clienteService.getClientes().subscribe(
+                      clientes => this.clientes = clientes
+                      );
+                 
+              
+                }
             )
         
           }
