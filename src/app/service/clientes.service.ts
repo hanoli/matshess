@@ -54,7 +54,7 @@ export class ClientesService {
     return this.http.get<Cliente>('api/idCliente/'+id,{headers:this.httpHeaders})
   }
 
-  updateCliente(cliente:Product):Observable<Cliente>{
+  updateCliente(cliente:Cliente):Observable<Cliente>{
     console.log('Rol1: ' + this.rol)
     return this.http.put<Cliente>(environment.urlHost+'api/actualizar/'+cliente.id,cliente,{headers:this.httpHeaders})
   }

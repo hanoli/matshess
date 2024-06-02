@@ -86,31 +86,31 @@
 
         <p-dialog [(visible)]="clientDialog" [style]="{width: '450px'}" header="Detalle de cliente" [modal]="true" class="p-fluid">
             <ng-template pTemplate="content">
-                <img [src]="'assets/demo/images/product/' + product.image" [alt]="product.image" width="150" class="mt-0 mx-auto mb-5 block shadow-2" *ngIf="product.image">
+                <!--<img [src]="'assets/demo/images/product/' + product.image" [alt]="product.image" width="150" class="mt-0 mx-auto mb-5 block shadow-2" *ngIf="product.image">-->
                 <div class="field">
                     <label for="name">Nombre</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="product.nombre" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.name}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.nombre">Name is required.</small>
+                    <input type="text" pInputText id="name" [(ngModel)]="cliente.nombre" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.name}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.nombre">Name is required.</small>
                 </div>
                 <div class="field">
                     <label for="name">Apellido Paterno</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="product.apellidoPat" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.name}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.apellidoPat">Name is required.</small>
+                    <input type="text" pInputText id="name" [(ngModel)]="cliente.apellidoPat" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.name}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.apellidoPat">Name is required.</small>
                 </div>
                 <div class="field">
                     <label for="name">Apellido Materno</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="product.apellidoMat" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.name}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.apellidoMat">Name is required.</small>
+                    <input type="text" pInputText id="name" [(ngModel)]="cliente.apellidoMat" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.name}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.apellidoMat">Name is required.</small>
                 </div>
                 <div class="field">
                     <label for="name">Telefono</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="product.telefono" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.name}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.telefono">Name is required.</small>
+                    <input type="text" pInputText id="name" [(ngModel)]="cliente.telefono" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.name}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.telefono">Name is required.</small>
                 </div>
                 <div class="field">
                     <label for="name">Correo</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="product.username" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.name}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.correo">Name is required.</small>
+                    <input type="text" pInputText id="name" [(ngModel)]="cliente.username" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.name}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.correo">Name is required.</small>
                 </div>
               
             </ng-template>
@@ -128,7 +128,7 @@
         <p-dialog [(visible)]="deleteProductDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
             <div class="flex align-items-center justify-content-center">
                 <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
-                <span *ngIf="product">¿Estas seguro que quieres eliminar <b>{{product.name}}</b>?</span>
+                <span *ngIf="cliente">¿Estas seguro que quieres eliminar <b>{{cliente.name}}</b>?</span>
             </div>
             <ng-template pTemplate="footer">
                 <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteProductDialog = false"></button>

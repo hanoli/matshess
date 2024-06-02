@@ -29,7 +29,9 @@ export class CrudComponent implements OnInit {
 
     products: Product[] = [];
 
-    product: Product = {};
+    
+
+    //product: Product = {};
 
     selectedProducts: Product[] = [];
 
@@ -39,7 +41,7 @@ export class CrudComponent implements OnInit {
 
     statuses: any[] = [];
 
-    clientes: Cliente[];
+    clientes: Cliente[] = [];
     
     //cliente:Cliente = new Cliente() 
 
@@ -74,7 +76,7 @@ export class CrudComponent implements OnInit {
 
     nuevoCliente() {
         this.btnGuardar = false;
-        this.product = {};
+        this.cliente = {};
         this.submitted = false;
         this.clientDialog = true;
     }
@@ -83,16 +85,16 @@ export class CrudComponent implements OnInit {
         this.deleteProductsDialog = true;
     }
 
-    editClient(product: Product) {
+    editClient(cliente: Cliente) {
         this.btnGuardar = true;
-        this.product = { ...product };
+        this.cliente = { ...cliente };
         this.clientDialog = true;
        // this.updateClient = true;
     }
 
     deleteProduct(product: Product) {
         this.deleteProductDialog = true;
-        this.product = { ...product };
+        this.cliente = { ...this.cliente };
     }
 
     eliminar(cliente:Cliente):void{
@@ -128,26 +130,19 @@ export class CrudComponent implements OnInit {
           }
       
           actualizaCliente():void{
-             console.log('actualizaCliente con Id: ' + this.product.id)
-            /*this.descripcionAlta = "Alta de cliente";
-            this.btnGuardar = false;
-            this.item=false;*/
-            this._clienteService.updateCliente(this.product).subscribe(
-                
+            console.log('actualizaCliente con Id: ' + this.cliente.id)
+            this._clienteService.updateCliente(this.cliente).subscribe(
+              
               response => 
               {
-               // this.hideDialog2()
+            
+            this.clientDialog = false;
+            
                 swal.fire('Exito','Registro actualizado con exito','success')
                 this._clienteService.getClientes().subscribe(
                     clientes => this.clientes = clientes
                     );
-               /* this._clienteService.getClientes().subscribe(
-               clientes => {  
-               this.dataSource = new MatTableDataSource();  
-               this.dataSource.data = clientes;
-               this.length = clientes.length;
-               this.dataSource.paginator = this.paginator;
-              });*/
+               
             
               }
            
@@ -160,10 +155,10 @@ export class CrudComponent implements OnInit {
 
            public creaCliente():void{
 
-            this._clienteService.creaCliente(this.product).subscribe(
+            this._clienteService.creaCliente(this.cliente).subscribe(
               response => 
               {
-                this.hideDialog()
+                
                 swal.fire('Exito','Registro guardado con exito','success')
               //  this.item=false;
               // this.formCliente.reset();
@@ -195,9 +190,9 @@ export class CrudComponent implements OnInit {
 
     confirmDelete() {
         this.deleteProductDialog = false;
-        this.products = this.products.filter(val => val.id !== this.product.id);
+        this.products = this.products.filter(val => val.id !== this.cliente.id);
         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-        this.product = {};
+        this.cliente = {};
     }
 
     hideDialog() {
@@ -205,7 +200,7 @@ export class CrudComponent implements OnInit {
         this.submitted = false;
     }
  
-    saveProduct() {
+   /* saveProduct() {
         this.submitted = true;
 
         if (this.product.nombre?.trim()) {
@@ -228,7 +223,7 @@ export class CrudComponent implements OnInit {
             this.clientDialog = false;
             this.product = {};
         }
-    }
+    }*/
 
    /* public creaCliente():void{
 
