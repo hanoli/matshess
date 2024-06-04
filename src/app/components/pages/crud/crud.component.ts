@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 
@@ -175,15 +174,15 @@ export class CrudComponent implements OnInit {
 
     confirmDeleteSelected() {
         this.deleteProductsDialog = false;
-        this.products = this.products.filter(val => !this.selectedProducts.includes(val));
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
+        this.clientes = this.clientes.filter(val => !this.selectedProducts.includes(val));
+        this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Clientes Borrados', life: 3000 });
         this.selectedProducts = [];
     }
 
     confirmDelete() {
         this.deleteProductDialog = false;
         this.products = this.products.filter(val => val.id !== this.cliente.id);
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+        this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Cliente Borrado', life: 3000 });
         this.cliente = {};
     }
 

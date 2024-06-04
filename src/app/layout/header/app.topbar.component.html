@@ -1,21 +1,32 @@
 <div class="layout-topbar">
-    <a class="layout-topbar-logo" routerLink="">
+    <a class="layout-topbar-logo" routerLink="/layout">
         <!--<img src="assets/layout/images/{{layoutService.config().colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">-->
-        <img src="assets/layout/images/BMVLogo.png" alt="logo">
-        <span>IEVA</span>
+        <!--<img src="assets/layout/images/logo-hanolipc.png" alt="logo">-->
+        <img src="assets/layout/images/logo-hanolipc.png" alt="shessmat logo" class="w-12rem flex-shrink-10"> 
+        
+        <!--<span>IEVA</span>-->
     </a>
+    
+  
 
     <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
         <i class="pi pi-bars"></i>
     </button>
-
+    
+    <div class="justify-content: center;">
+  
+        <img src="assets/layout/images/logo-shessmat.png" alt="shessmat logo" class="w-28rem flex-shrink-0">
+      
+</div>
     <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
         <i class="pi pi-ellipsis-v"></i>
     </button>
+  
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <a class="text-black fst-normal fs-5 title m-lg-2">{{user}}</a>
         <button class="p-link layout-topbar-button" (click)="logout()">
-            <!--i class="pi-sign-out"></i>-->
+            <i class="pi-sign-out"></i>
             <h5>Salir</h5>
             
         </button>

@@ -1,15 +1,23 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "../../service/app.layout.service";
 
 import { Router } from '@angular/router';
 import { LoginService } from '../../service/login.service';
+import { LoginRequest } from 'src/app/model/loginRequest';
 
 @Component({
     selector: 'app-topbar',
     templateUrl: './app.topbar.component.html'
 })
-export class AppTopBarComponent {
+export class AppTopBarComponent implements OnInit  {
+  
+  user: any = localStorage.getItem("user");
+
+  ngOnInit() {
+    console.log("Usuario en localStorage: " + localStorage.getItem("user"))
+          this.user = localStorage.getItem("user");
+    }
 
     items!: MenuItem[];
 
@@ -20,6 +28,14 @@ export class AppTopBarComponent {
     @ViewChild('topbarmenu') menu!: ElementRef;
 
     constructor(public layoutService: LayoutService,private loginService:LoginService,private router:Router) { }
+
+ 
+      
+   /*get user(){
+      //return this.loginService.currentUser;
+      return localStorage.getItem("user")
+    }*/
+
 
     logout()
     {

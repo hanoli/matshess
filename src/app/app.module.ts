@@ -14,6 +14,8 @@ import { NodeService } from './service/node.service';
 import { PhotoService } from './service/photo.service';
 import { ProductService } from './service/product.service';
 
+import { TooltipModule } from 'primeng/tooltip';
+
 
 
 @NgModule({

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { LoginRequest } from '../model/loginRequest';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
 import  {  Observable, throwError, catchError, BehaviorSubject , tap, map} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
+const jwtHelper = new JwtHelperService();
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +16,29 @@ export class LoginService {
   currentUserData: BehaviorSubject<String> =new BehaviorSubject<String>("");
     username: any;
 
+    private user?:LoginRequest;
+
   constructor(private http: HttpClient) { }
+
+  get currentUser():LoginRequest|undefined{
+if(!this.user)return undefined;
+return structuredClone(this.user);
+  }
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem("token");
+    console.log("token: "+token)
+    return !jwtHelper.isTokenExpired(token);
+  }
 
   login(credentials:LoginRequest):Observable<any>{
     console.log("credentials2: " + credentials.username )
     return this.http.post<any>(environment.urlHost+"auth/login",credentials).pipe(
+      
       tap( (userData) => {
-        sessionStorage.setItem("token", userData.token);
+        console.log(userData)
+        localStorage.setItem("token", userData.token);
+        localStorage.setItem("user", userData.user);
         this.currentUserData.next(userData.token);
         this.currentUserLoginOn.next(true);
       }),
@@ -30,7 +48,7 @@ export class LoginService {
   } 
 
   logout():void{
-    sessionStorage.removeItem("token");
+    localStorage.removeItem("token");
     this.currentUserLoginOn.next(false);
   }
 

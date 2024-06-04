@@ -2,13 +2,22 @@
     <div class="col-10">
         <div class="card px-6 py-6">
             <p-toast></p-toast>
+            
             <p-toolbar styleClass="mb-4">
                 <ng-template pTemplate="left">
                     <div class="my-2">
-                        <button pButton pRipple label="" icon="pi pi-plus" class="p-button-success mr-2" (click)="nuevoCliente()"></button>
-                        <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
+
+                        <button pButton pRipple label="" icon="pi pi-plus" class="p-button-success mr-2"  
+                         pTooltip="Agregar Cliente" showDelay="1000" hideDelay="300" tooltipPosition="top" 
+                         (click)="nuevoCliente()">
+                        </button>
+                        <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger"
+                        pTooltip="Eliminar Clientes" showDelay="1000" hideDelay="300" tooltipPosition="top" 
+                        (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
                     </div>
                 </ng-template>
+
+               
 
                 <ng-template pTemplate="right">
                     <!--<p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="mr-2 inline-block"></p-fileUpload>-->
@@ -75,8 +84,8 @@
                         </td>
                         <td>
                             <div class="flex">
-                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editClient(cliente)"></button>
-                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="eliminar(cliente)"></button>
+                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" pTooltip="Editar" showDelay="1000" hideDelay="300" tooltipPosition="top"  (click)="editClient(cliente)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" pTooltip="Eliminar" showDelay="1000" hideDelay="300" tooltipPosition="top" (click)="eliminar(cliente)"></button>
                             </div>
                         </td>
                     </tr>
@@ -125,7 +134,7 @@
         </ng-template>
         </p-dialog>
 
-        <p-dialog [(visible)]="deleteProductDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+        <!--<p-dialog [(visible)]="deleteProductDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
             <div class="flex align-items-center justify-content-center">
                 <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
                 <span *ngIf="cliente">¿Estas seguro que quieres eliminar <b>{{cliente.name}}</b>?</span>
@@ -134,9 +143,9 @@
                 <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteProductDialog = false"></button>
                 <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="confirmDelete()"></button>
             </ng-template>
-        </p-dialog>
+        </p-dialog>-->
 
-        <p-dialog [(visible)]="deleteProductsDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+       <!-- <p-dialog [(visible)]="deleteProductsDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
             <div class="flex align-items-center justify-content-center">
                 <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
                 <span>¿Estas seguro que deseas eliminar estos clientes?</span>
@@ -145,6 +154,6 @@
                 <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteProductsDialog = false"></button>
                 <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="confirmDeleteSelected()"></button>
             </ng-template>
-        </p-dialog>
+        </p-dialog>-->
     </div>
 </div>

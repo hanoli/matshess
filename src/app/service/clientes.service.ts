@@ -36,8 +36,6 @@ export class ClientesService {
 
   creaCliente(cliente:Cliente):Observable<Cliente>{
     console.log('object cliente: ' + cliente.nombre)
-    console.log('apellido parterno: ' + cliente.apellidoPat)
-    console.log('id: ' + cliente.id)
     cliente.password = "123456"
     console.log('pasword: ' + cliente.password)
      
@@ -47,12 +45,12 @@ export class ClientesService {
   }
 
   borraCliente(id:string):Observable<Cliente>{
-    return this.http.delete<Cliente>('api/eliminar/'+id,{headers:this.httpHeaders})
+    return this.http.delete<Cliente>(environment.urlHost+'api/eliminar/'+id,{headers:this.httpHeaders})
   }
 
-  getCliente(id:number): Observable<Cliente> {
+  /*getCliente(id:number): Observable<Cliente> {
     return this.http.get<Cliente>('api/idCliente/'+id,{headers:this.httpHeaders})
-  }
+  }*/
 
   updateCliente(cliente:Cliente):Observable<Cliente>{
     console.log('Rol1: ' + this.rol)
