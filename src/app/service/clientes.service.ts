@@ -23,38 +23,38 @@ export class ClientesService {
 
   constructor(private http: HttpClient) { }
 
-    getClientes(): Observable<Cliente[]> {
+    getUsers(): Observable<Cliente[]> {
     /*return this.http.get(environment.urlHost+"auth/login").pipe(
       map(response => response as Cliente[])
     );*/
 
-    return this.http.get(environment.urlHost+"api/lista").pipe(
+    return this.http.get(environment.urlHost+"api/listUser").pipe(
       map(response => response as Cliente[])
     );
 
   }
 
-  creaCliente(cliente:Cliente):Observable<Cliente>{
+  saveUser(cliente:Cliente):Observable<Cliente>{
     console.log('object cliente: ' + cliente.nombre)
     cliente.password = "123456"
     console.log('pasword: ' + cliente.password)
      
     cliente.rol = this.rol;
     //console.log('Rol: ' + cliente.rol)
-    return this.http.post<Cliente>(environment.urlHost+'api/guardar',cliente,{headers:this.httpHeaders})
+    return this.http.post<Cliente>(environment.urlHost+'api/saveUser',cliente,{headers:this.httpHeaders})
   }
 
-  borraCliente(id:string):Observable<Cliente>{
-    return this.http.delete<Cliente>(environment.urlHost+'api/eliminar/'+id,{headers:this.httpHeaders})
+  deleteUser(id:string):Observable<Cliente>{
+    return this.http.delete<Cliente>(environment.urlHost+'api/deleteUser/'+id,{headers:this.httpHeaders})
   }
 
   /*getCliente(id:number): Observable<Cliente> {
     return this.http.get<Cliente>('api/idCliente/'+id,{headers:this.httpHeaders})
   }*/
 
-  updateCliente(cliente:Cliente):Observable<Cliente>{
+  updateUser(cliente:Cliente):Observable<Cliente>{
     console.log('Rol1: ' + this.rol)
-    return this.http.put<Cliente>(environment.urlHost+'api/actualizar/'+cliente.id,cliente,{headers:this.httpHeaders})
+    return this.http.put<Cliente>(environment.urlHost+'api/updateUser/'+cliente.id,cliente,{headers:this.httpHeaders})
   }
 
   
