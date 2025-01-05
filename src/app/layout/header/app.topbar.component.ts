@@ -8,7 +8,8 @@ import { LoginRequest } from 'src/app/model/loginRequest';
 
 @Component({
     selector: 'app-topbar',
-    templateUrl: './app.topbar.component.html'
+    templateUrl: './app.topbar.component.html',
+  styleUrl: './app.topbar.component.scss'
 })
 export class AppTopBarComponent implements OnInit  {
   
