@@ -26,11 +26,11 @@ export class AppMenuComponent implements OnInit {
                 icon: 'pi pi-fw pi-briefcase',
                 items: [
                     {
-                        label: 'Clientes',
+                        label: 'Usuarios',
                         icon: 'pi pi-fw pi-user',
                         items: [
                             {
-                                label: 'Lista de clientes',
+                                label: 'Lista de usuarios',
                                 icon: 'pi pi-fw pi-sign-in',
                                 routerLink: ['/layout/pages/crud']
                             },
