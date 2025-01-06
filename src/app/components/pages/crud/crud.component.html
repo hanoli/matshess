@@ -122,9 +122,14 @@
                     <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.correo">Name is required.</small>
                 </div>
                 <div class="field">
+                    <label for="name">Contraseña</label>
+                    <input type="password" pInputText id="password" [(ngModel)]="cliente.password" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.password}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.password">La contraseña es requerida.</small>
+                </div>
+                <div class="field">
                     <label for="name">Rol</label>
                     <input type="text" pInputText id="name" [(ngModel)]="cliente.role" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.role}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.role">Name is required.</small>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.role">El rol es requerido.</small>
                 </div>
               
             </ng-template>

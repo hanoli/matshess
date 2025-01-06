@@ -36,7 +36,7 @@ export class ClientesService {
 
   saveUser(cliente:Cliente):Observable<Cliente>{
     console.log('object cliente: ' + cliente.nombre)
-    cliente.password = "123456"
+  //  cliente.password = "123456"
     console.log('pasword: ' + cliente.password)
      
     cliente.rol = this.rol;
