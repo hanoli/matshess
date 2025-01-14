@@ -521,3 +521,8 @@ p {
 p:last-child {
   margin-bottom: 0;
 }
+
+/* Usamos un contenedor personalizado para que el mat-select se dibuje fuera del p-dialog */
+.custom-overlay-container .mat-select-panel {
+  z-index: 9999 !important;
+}

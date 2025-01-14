@@ -5,6 +5,8 @@ import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { Cliente } from '../model/cliente';
 import { Product, Role } from '../model/product';
+import { Folio } from '../interface/Folio';
+
 
 
 

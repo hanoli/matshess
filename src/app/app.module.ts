@@ -14,17 +14,20 @@ import { NodeService } from './service/node.service';
 import { PhotoService } from './service/photo.service';
 import { ProductService } from './service/product.service';
 
+
 import { TooltipModule } from 'primeng/tooltip';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
-    imports: [AppRoutingModule, AppLayoutModule],
+    imports: [AppRoutingModule, AppLayoutModule,OverlayModule  ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService
+        PhotoService, ProductService, provideAnimationsAsync()
     ],
     bootstrap: [AppComponent],
 })

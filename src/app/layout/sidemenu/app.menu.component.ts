@@ -33,6 +33,7 @@ export class AppMenuComponent implements OnInit {
                                 label: 'Recepcion de equipos',
                                 icon: 'pi pi-fw pi-arrow-right',
                                // routerLink: ['/auth/login']
+                               routerLink: ['/layout/pages/recepcion-equipo']
                             },
                             {
                                 label: 'Entrega de equipos',
