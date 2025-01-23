@@ -21,3 +21,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     z-index: 9999 !important;
   }
 
+/* Estilo para el campo de entrada mat-input-element */
+.mat-mdc-text-field-wrapper .mat-input-element {
+  font-size: 18px;            /* Ajusta el tamaño del texto */
+  height: 18px;               /* Ajusta la altura del campo */
+}

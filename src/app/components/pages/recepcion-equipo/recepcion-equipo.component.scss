@@ -3,24 +3,29 @@
     margin: 20px auto;
     padding: 16px;
     background-color: #fafafa;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(53, 10, 172, 0.1);
     border-radius: 8px;
   }
   
   mat-card {
     margin-bottom: 20px;
-    border-radius: 8px;
+    border-radius: 0.5px;
   }
   
+ 
+
   mat-card-header {
     background-color: #1976d2;
+
     color: white;
     padding: 10px;
     border-radius: 8px 8px 0 0;
+    height: 25px;
   }
   
   mat-card-title {
-    font-weight: normal;
+    font-weight: 10%;
+
   }
   
   .form-row {
@@ -41,6 +46,10 @@
     width: 100%;  // Asegura que el textarea ocupe todo el ancho disponible
   }
   
+  mat-form-field{
+    width: 10%;  // Para que el textarea se ajuste completamente
+  }
+
   mat-form-field textarea {
     width: 100%;  // Para que el textarea se ajuste completamente
   }
@@ -77,6 +86,6 @@
     }
   }
 
-  
 
-  
+
+

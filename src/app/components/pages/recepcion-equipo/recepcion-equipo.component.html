@@ -2,8 +2,103 @@
     <div class="col-10">
         <div class="card px-6 py-6">
             <p-toast></p-toast>
+            
 
-            <p-toolbar styleClass="mb-4">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()"> 
+                <!-- Primer mat-card: Folio y Fecha -->
+                    <mat-card-content>
+                        <div class="form-row" style="display: flex; justify-content: space-between;">
+                            <mat-form-field appearance="fill" class="form-field" style=" max-width: 90px; flex: 1; margin-right: 10px;">
+                                <mat-label>Folio</mat-label>
+                                <input matInput formControlName="folio" readonly>
+                            </mat-form-field>
+            
+                            <mat-form-field appearance="fill" class="form-field" style="flex: 1;">
+                                <mat-label>Fecha</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="fecha" readonly>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                            
+                        </div>
+                    </mat-card-content>
+                
+                <mat-card class="form-section" style="max-width: 950px; margin: 5px auto;">
+               
+        </mat-card>
+        <mat-card class="form-section" style="max-width: 950px; margin: 5px auto;">
+            <mat-card-content style="margin-right: 10px;"> 
+            <button pButton pRipple label="" icon="pi pi-plus" class="p-button-success mr-2"
+            pTooltip="Agregar Cliente" showDelay="1000" hideDelay="300" tooltipPosition="top"
+            (click)="nuevoCliente()">
+            </button>
+            </mat-card-content>
+        </mat-card>
+        
+                <!-- Segundo mat-card: Datos del Cliente -->
+                <mat-card class="form-section" style="max-width: 950px; margin: 5px auto;">
+                    
+                  
+
+                <mat-card-content style="margin-right: 10px;">
+                    <mat-form-field appearance="fill" class="form-field" style="margin-right: 10px;">
+                        <mat-label style="font-size: 14px;">Num. Cliente</mat-label>
+                        <input matInput formControlName="numCliente">
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="fill" class="form-field" style="flex: 1;">
+                        <mat-label style="font-size: 14px;">Nombre</mat-label>
+                        <input matInput formControlName="nombre">
+                    </mat-form-field>
+                </mat-card-content>
+                    
+                </mat-card>
+               
+                <!-- Tercer mat-card: Datos del Equipo -->
+                <mat-card class="form-section" style="max-width: 950px; margin: 5px auto;">
+                  
+                    <mat-card-content>
+                        <div class="form-row" style="display: flex; justify-content: space-between;">
+                            <mat-form-field appearance="fill" class="form-field" style="flex: 1; margin-right: 10px;">
+                                <mat-label style="font-size: 14px;">Tipo de Equipo</mat-label>
+                                <mat-select formControlName="tipoEquipo">
+                                    <mat-option *ngFor="let tipo of tiposEquipos" [value]="tipo">{{ tipo }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+            
+                            <mat-form-field appearance="fill" class="form-field" style="flex: 1;">
+                                <mat-label style="font-size: 14px;">Marca</mat-label>
+                                <mat-select formControlName="marca">
+                                    <mat-option *ngFor="let marca of marcas" [value]="marca">{{ marca }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" class="form-field" style="flex: 1; margin-right: 10px;">
+                                <mat-label style="font-size: 14px;">Modelo</mat-label>
+                                <input matInput formControlName="modelo">
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" class="form-field" style="flex: 1;">
+                                <mat-label style="font-size: 14px;">Num. Serie</mat-label>
+                                <input matInput formControlName="numSerie">
+                            </mat-form-field>
+                        </div>
+            
+                        <div class="form-row" style="display: flex; justify-content: space-between;">
+                           
+                        </div>
+            
+                        <mat-form-field appearance="fill" class="form-field" style="width: 100%;">
+                            <mat-label style="font-size: 14px;">Comentarios</mat-label>
+                            <textarea matInput formControlName="comentarios"></textarea>
+                        </mat-form-field>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+            
+            
+
+            
+        
+            <!--<p-toolbar styleClass="mb-4">
                 <ng-template pTemplate="left">
                     <div class="my-2">
                         <button pButton pRipple label="" icon="pi pi-plus" class="p-button-success mr-2"
@@ -20,16 +115,12 @@
                 <ng-template pTemplate="right">
                     <button pButton pRipple label="Exportar" icon="pi pi-upload" class="p-button-help" (click)="dt.exportCSV()"></button>
                 </ng-template>
-            </p-toolbar>
+            </p-toolbar>-->
 
             <p-table #dt [value]="clientes" [columns]="cols" styleClass="p-datatable-sm" [tableStyle]="{'min-width': '50rem'}" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['name','country.name','representative.name','status']" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedProducts" selectionMode="multiple" [rowHover]="true" dataKey="id">
                 <ng-template pTemplate="caption">
                     <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-                        <h5 class="m-0">Usuarios</h5>
-                        <span class="block mt-2 md:mt-0 p-input-icon-left">
-                            <i class="pi pi-search"></i>
-                            <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Search..." class="w-full sm:w-auto" />
-                        </span>
+                        
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
@@ -94,7 +185,7 @@
 </div>
 
 <!-- Dialog for Client Form -->
-<p-dialog [(visible)]="clientDialog" [style]="{width: '650px'}" header="Alta de folio" [modal]="true" class="p-fluid" appendTo="body">
+<!--<p-dialog [(visible)]="clientDialog" [style]="{width: '650px'}" header="Alta de folio" [modal]="true" class="p-fluid" appendTo="body">
     <ng-template pTemplate="content">
      
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -186,14 +277,14 @@
         <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
         <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text" (click)="onSubmit()"></button>
     </ng-template>
-</p-dialog>
+</p-dialog>-->
 
 
-<!--<p-dialog [(visible)]="clientDialog" [style]="{width: '650px'}" header="Alta de folio" [modal]="true" class="p-fluid" appendTo="body">
+<p-dialog [(visible)]="clientDialog" [style]="{width: '650px'}" header="Alta de folio" [modal]="true" class="p-fluid" appendTo="body">
     <mat-select>
       <mat-option value="1">Opción 1</mat-option>
       <mat-option value="2">Opción 2</mat-option>
     </mat-select>
-  </p-dialog>-->
+  </p-dialog>
   
   
