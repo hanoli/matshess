@@ -40,8 +40,13 @@ private httpHeaders = new HttpHeaders({
   
 
   creaFolio(folio:Folio):Observable<Folio>{
+    console.log("cliente in service : " + folio.cliente);
+    console.log("marca in service : " + folio.marca);
+    console.log("modelo in service: " + folio.modelo);
+    console.log("numSerie in service: " + folio.numSerie);
+    console.log("Comentario in service: " + folio.comentarios);
   console.log("JsonFolio: " + folio)
-    return this.http.post<Folio>('api/guardarFolio',folio,{headers:this.httpHeaders})
+    return this.http.post<Folio>('http://localhost:8080/api/guardarFolio',folio,{headers:this.httpHeaders})
   }
 
   exportPdf(elementPDF:FolioModel):Observable<Blob>{

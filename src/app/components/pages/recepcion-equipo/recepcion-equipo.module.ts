@@ -34,6 +34,10 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { IngresaclienteComponent } from '../../ingresaCliente/ingresacliente.component';
+import { CrudComponent } from '../crud/crud.component';
+
 
 @NgModule({
     imports: [
@@ -55,7 +59,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
         InputNumberModule,
         DialogModule,
         TooltipModule,
-        
+      
         
     MatButtonModule,
     MatInputModule,
@@ -71,7 +75,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSelectModule,
     MatFormFieldModule,
     
-    
+    ModalModule.forRoot(),
     
     
     

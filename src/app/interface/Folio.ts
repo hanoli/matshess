@@ -1,8 +1,9 @@
 import { Cliente } from "./Cliente";
 
+
 export class Folio {
   id: number;
-  folio: number;
+  folio:string
   fecha: Date;
   tipoEquipo: String;
   marca: String;

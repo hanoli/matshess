@@ -8,6 +8,7 @@ import { ClientesService } from 'src/app/service/clientes.service';
 import { ProductService } from 'src/app/service/product.service';
 import { Product } from 'src/app/model/product';
 import { Cliente } from 'src/app/model/cliente';
+import { UsuariosService } from 'src/app/service/usuarios.service';
 
 
 @Component({
@@ -48,12 +49,12 @@ export class CrudComponent implements OnInit {
 
     rowsPerPageOptions = [5, 10, 20];
 
-    constructor(private productService: ProductService, private messageService: MessageService,private _clienteService:ClientesService) { }
+    constructor(private productService: ProductService, private messageService: MessageService,private _usuariosService:UsuariosService) { }
 
     ngOnInit() {
         this.btnGuardar = false;
         //this.productService.getProducts().then(data => this.products = data);
-        this._clienteService.getUsers().subscribe(
+        this._usuariosService.getUsers().subscribe(
             clientes => this.clientes = clientes
             );
             
@@ -111,7 +112,7 @@ export class CrudComponent implements OnInit {
             }).then((result) => {
               if (result.isConfirmed) {
         
-                this._clienteService.deleteUser(cliente.id).subscribe(
+                this._usuariosService.deleteUser(cliente.id).subscribe(
                   response => {
                     this.clientes = this.clientes.filter(cli => cli !== cliente)
                     swal.fire(
@@ -130,7 +131,7 @@ export class CrudComponent implements OnInit {
       
           actualizaCliente():void{
             console.log('actualizaCliente con Id: ' + this.cliente.id)
-            this._clienteService.updateUser(this.cliente).subscribe(
+            this._usuariosService.updateUser(this.cliente).subscribe(
               
               response => 
               {
@@ -138,7 +139,7 @@ export class CrudComponent implements OnInit {
             this.clientDialog = false;
             
                 swal.fire('Exito','Registro actualizado con exito','success')
-                this._clienteService.getUsers().subscribe(
+                this._usuariosService.getUsers().subscribe(
                     clientes => this.clientes = clientes
                     );
                
@@ -154,14 +155,14 @@ export class CrudComponent implements OnInit {
 
            public creaCliente():void{
 
-            this._clienteService.saveUser(this.cliente).subscribe(
+            this._usuariosService.saveUser(this.cliente).subscribe(
               response => 
                 {
               
               this.clientDialog = false;
               
                   swal.fire('Exito','Se guardo cliente con exito','success')
-                  this._clienteService.getUsers().subscribe(
+                  this._usuariosService.getUsers().subscribe(
                       clientes => this.clientes = clientes
                       );
                  

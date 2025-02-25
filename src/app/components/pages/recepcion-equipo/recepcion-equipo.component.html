@@ -4,13 +4,14 @@
             <p-toast></p-toast>
             
 
-            <form [formGroup]="form" (ngSubmit)="onSubmit()"> 
+            <form [formGroup]="formFolio"  (ngSubmit) = "creaFolio()"> 
                 <!-- Primer mat-card: Folio y Fecha -->
                     <mat-card-content>
                         <div class="form-row" style="display: flex; justify-content: space-between;">
                             <mat-form-field appearance="fill" class="form-field" style=" max-width: 90px; flex: 1; margin-right: 10px;">
                                 <mat-label>Folio</mat-label>
                                 <input matInput formControlName="folio" readonly>
+                                
                             </mat-form-field>
             
                             <mat-form-field appearance="fill" class="form-field" style="flex: 1;">
@@ -30,7 +31,7 @@
             <mat-card-content style="margin-right: 10px;"> 
             <button pButton pRipple label="" icon="pi pi-plus" class="p-button-success mr-2"
             pTooltip="Agregar Cliente" showDelay="1000" hideDelay="300" tooltipPosition="top"
-            (click)="nuevoCliente()">
+            (click)="addClient()">
             </button>
             </mat-card-content>
         </mat-card>
@@ -61,24 +62,41 @@
                         <div class="form-row" style="display: flex; justify-content: space-between;">
                             <mat-form-field appearance="fill" class="form-field" style="flex: 1; margin-right: 10px;">
                                 <mat-label style="font-size: 14px;">Tipo de Equipo</mat-label>
-                                <mat-select formControlName="tipoEquipo">
+                                
+                                <!--<mat-select formControlName="tipoEquipo">
                                     <mat-option *ngFor="let tipo of tiposEquipos" [value]="tipo">{{ tipo }}</mat-option>
-                                </mat-select>
+                                </mat-select>-->
+
+
+                                <mat-select [(ngModel)]="selectedTipoEquipo.id"  #t (selectionChange)="capturar(t.value)" formControlName="tipoEquipo">
+                                    <mat-option *ngFor="let tipo of tiposEquipos" [value]="tipo">
+                                      {{tipo}}
+                                    </mat-option>
+                                  </mat-select>
+
+
                             </mat-form-field>
             
                             <mat-form-field appearance="fill" class="form-field" style="flex: 1;">
                                 <mat-label style="font-size: 14px;">Marca</mat-label>
-                                <mat-select formControlName="marca">
+                                <!--<mat-select formControlName="marca">
                                     <mat-option *ngFor="let marca of marcas" [value]="marca">{{ marca }}</mat-option>
-                                </mat-select>
+                                </mat-select>-->
+                                <mat-select [(ngModel)]="selectedMarca.id"  #m (selectionChange)="capturarMarca(m.value)" formControlName="marca" >
+                                    <mat-option *ngFor="let marca of marcas" [value]="marca">
+                                      {{marca}}
+                                    </mat-option>
+                                  </mat-select>
                             </mat-form-field>
                             <mat-form-field appearance="fill" class="form-field" style="flex: 1; margin-right: 10px;">
                                 <mat-label style="font-size: 14px;">Modelo</mat-label>
-                                <input matInput formControlName="modelo">
+                                <!--<input matInput formControlName="modelo">-->
+                                <input matInput id="modelo" [(ngModel)]="folio.modelo" name="modelo" formControlName="modelo">
                             </mat-form-field>
                             <mat-form-field appearance="fill" class="form-field" style="flex: 1;">
                                 <mat-label style="font-size: 14px;">Num. Serie</mat-label>
-                                <input matInput formControlName="numSerie">
+                                <!--<input matInput formControlName="numSerie">-->
+                                <input matInput id="numSerie" [(ngModel)]="folio.numSerie"  name="numSerie" formControlName="numSerie">
                             </mat-form-field>
                         </div>
             
@@ -88,10 +106,19 @@
             
                         <mat-form-field appearance="fill" class="form-field" style="width: 100%;">
                             <mat-label style="font-size: 14px;">Comentarios</mat-label>
-                            <textarea matInput formControlName="comentarios"></textarea>
+                            <!--<textarea matInput formControlName="comentarios"></textarea>-->
+                            <textarea  matInput id="comentarios" [(ngModel)]="folio.comentarios"  name="comentarios" formControlName="comentarios"></textarea>
                         </mat-form-field>
+                        <div class="form-group col-md-10">
+                            <!--<button type="submit" class="btn btn-primary">Guardar</button>-->
+                            <button type="submit" pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text"></button>
+                         </div>
                     </mat-card-content>
+                  
+             
                 </mat-card>
+
+               
             </form>
             
             
