@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
+    "install": "npm install --legacy-peer-deps",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
