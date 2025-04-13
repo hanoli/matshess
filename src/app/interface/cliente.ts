@@ -8,5 +8,7 @@ export class Cliente {
     direccion: string;
     telefono: string;
     correo: string;
+    fechaAlta:string;
     folios: Folio[]=[];
+    
   }
