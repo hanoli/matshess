@@ -1,6 +1,6 @@
 import { Folio } from "./Folio";
 
-export class Cliente {
+export class Cliente2 {
     id: number;
     nombre: string;
     apellidoPat: string;

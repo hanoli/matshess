@@ -1,4 +1,4 @@
-import {Cliente} from '../../../interface/Cliente';
+
 
 export class FolioAprobadosModel {
   folio:number;

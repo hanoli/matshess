@@ -8,7 +8,10 @@ import { ClientesService } from 'src/app/service/clientes.service';
 import { ProductService } from 'src/app/service/product.service';
 import { Product } from 'src/app/model/product';
 import { DatePipe } from '@angular/common';
-import {Cliente} from '../../../interface/Cliente';
+
+import { Cliente } from 'src/app/model/cliente';
+import { Cliente2 } from 'src/app/interface/cliente2';
+
 
 
 
@@ -48,8 +51,8 @@ export class ClienteComponent implements OnInit {
     //cliente:Cliente = new Cliente() 
     
 
-    clientes: Cliente[];
-    cliente:Cliente = new Cliente()
+    clientes: Cliente2[];
+    cliente:Cliente2 = new Cliente2()
 
     rowsPerPageOptions = [5, 10, 20];
 
@@ -90,7 +93,7 @@ export class ClienteComponent implements OnInit {
         this.deleteProductsDialog = true;
     }
 
-    editClient(cliente: Cliente) {
+    editClient(cliente: Cliente2) {
         this.btnGuardar = true;
         this.cliente = { ...cliente };
 
@@ -117,7 +120,7 @@ export class ClienteComponent implements OnInit {
         this.cliente = { ...this.cliente };
     }*/
 
-    eliminar(cliente:Cliente):void{
+    eliminar(cliente:Cliente2):void{
 
         console.log("item de cliente: " + cliente.id)
         
