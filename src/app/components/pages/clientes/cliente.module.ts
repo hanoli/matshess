@@ -29,7 +29,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ModalModule } from 'ngx-bootstrap/modal';
+
 import { ClienteComponent } from './cliente.component';
 import { CalendarModule } from 'primeng/calendar';
 
@@ -69,7 +69,7 @@ import { CalendarModule } from 'primeng/calendar';
               MatSelectModule,
               MatFormFieldModule,
               
-              ModalModule.forRoot(),
+             
   ],
       declarations: [ClienteComponent]
 })

@@ -4,7 +4,7 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import {Router, ActivatedRoute} from "@angular/router"; 
 
 import swal from 'sweetalert2';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
 
 import { MatTableDataSource } from '@angular/material/table';
 //import { FormGroup, FormControl,Validators  } from '@angular/forms';
@@ -25,7 +25,7 @@ export class IngresaclienteComponent implements OnInit {
   item:boolean;
   clientes: Cliente[];
   cliente:Cliente = new Cliente()
-  bsModalRef: BsModalRef;
+
   descripcionAlta:String;
   btnGuardar:boolean;
   pageIndex:number;
@@ -39,7 +39,7 @@ export class IngresaclienteComponent implements OnInit {
     private router: Router,
     private activatedRoute:ActivatedRoute,
     private clienteService: ClientesService,
-    private bsModalService: BsModalService, 
+
     private idClienteService : ClientesService) { }
 
     @ViewChild(MatPaginator) 
@@ -177,7 +177,7 @@ export class IngresaclienteComponent implements OnInit {
 
   onClose(){
     
-    this.bsModalService.hide();
+
    }
 
    cancelar(){
