@@ -6,7 +6,8 @@ import { map } from 'rxjs/operators';
 
 import { Product, Role } from '../model/product';
 import { Folio } from '../interface/Folio';
-import { Cliente } from '../interface/Cliente';
+
+import { Cliente2 } from 'src/app/interface/cliente2';
 
 
 
@@ -24,28 +25,28 @@ export class ClientesService {
 
   constructor(private http: HttpClient) { }
 
-  getClientes(): Observable<Cliente[]> {
+  getClientes(): Observable<Cliente2[]> {
     return this.http.get('api/lista').pipe(
-      map(response => response as Cliente[])
+      map(response => response as Cliente2[])
     );
   }
 
-  creaCliente(cliente:Cliente):Observable<Cliente>{
+  creaCliente(cliente:Cliente2):Observable<Cliente2>{
     console.log('Se recibe cliente con apellido parterno ' + cliente.apellidoMat)
     console.log('Se recibe cliente con id ' + cliente.id)
-    return this.http.post<Cliente>('api/guardar',cliente,{headers:this.httpHeaders})
+    return this.http.post<Cliente2>('api/guardar',cliente,{headers:this.httpHeaders})
   }
 
-  borraCliente(id:number):Observable<Cliente>{
-    return this.http.delete<Cliente>('api/eliminar/'+id,{headers:this.httpHeaders})
+  borraCliente(id:number):Observable<Cliente2>{
+    return this.http.delete<Cliente2>('api/eliminar/'+id,{headers:this.httpHeaders})
   }
 
-  getCliente(id:number): Observable<Cliente> {
-    return this.http.get<Cliente>('api/idCliente/'+id,{headers:this.httpHeaders})
+  getCliente(id:number): Observable<Cliente2> {
+    return this.http.get<Cliente2>('api/idCliente/'+id,{headers:this.httpHeaders})
   }
 
-  updateCliente(cliente:Cliente):Observable<Cliente>{
-    return this.http.put<Cliente>('api/actualizar/'+cliente.id,cliente,{headers:this.httpHeaders})
+  updateCliente(cliente:Cliente2):Observable<Cliente2>{
+    return this.http.put<Cliente2>('api/actualizar/'+cliente.id,cliente,{headers:this.httpHeaders})
 
   }
   

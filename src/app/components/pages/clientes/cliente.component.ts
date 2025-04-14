@@ -7,15 +7,20 @@ import swal from 'sweetalert2';
 import { ClientesService } from 'src/app/service/clientes.service';
 import { ProductService } from 'src/app/service/product.service';
 import { Product } from 'src/app/model/product';
+import { DatePipe } from '@angular/common';
+
 import { Cliente } from 'src/app/model/cliente';
-import { UsuariosService } from 'src/app/service/usuarios.service';
+import { Cliente2 } from 'src/app/interface/cliente2';
+
+
 
 
 @Component({
-    templateUrl: './crud.component.html',
-    providers: [MessageService]
+  templateUrl: './cliente.component.html',
+  styleUrl: './cliente.component.scss',
+  providers: [MessageService,DatePipe]
 })
-export class CrudComponent implements OnInit {
+export class ClienteComponent implements OnInit {
 
     btnGuardar:boolean;
 
@@ -41,21 +46,24 @@ export class CrudComponent implements OnInit {
 
     statuses: any[] = [];
 
-    clientes: Cliente[] = [];
-    
+    //clientes: Cliente[] = [];
+   // clientes: Cliente[];
     //cliente:Cliente = new Cliente() 
+    
 
-    cliente: Cliente = {};
+    clientes: Cliente2[];
+    cliente:Cliente2 = new Cliente2()
 
     rowsPerPageOptions = [5, 10, 20];
 
-    constructor(private productService: ProductService, private messageService: MessageService,private _usuariosService:UsuariosService) { }
+    constructor(private productService: ProductService, private messageService: MessageService,private _clientesService:ClientesService) { }
 
     ngOnInit() {
         this.btnGuardar = false;
         //this.productService.getProducts().then(data => this.products = data);
-        this._usuariosService.getUsers().subscribe(
+        this._clientesService.getClientes().subscribe(
             clientes => this.clientes = clientes
+            
             );
             
         /*this.cols = [
@@ -74,9 +82,9 @@ export class CrudComponent implements OnInit {
 
     }
 
-    nuevoUsuario() {
+    nuevoCliente() {
         this.btnGuardar = false;
-        this.cliente = {};
+       // this.cliente = {};
         this.submitted = false;
         this.clientDialog = true;
     }
@@ -85,19 +93,34 @@ export class CrudComponent implements OnInit {
         this.deleteProductsDialog = true;
     }
 
-    editClient(cliente: Cliente) {
+    editClient(cliente: Cliente2) {
         this.btnGuardar = true;
         this.cliente = { ...cliente };
+
+        if (this.cliente.fechaAlta) {
+          // Dividir el string "yyyy-MM-dd" en partes
+          const partesFecha = this.cliente.fechaAlta.split('-');
+          
+          // Crear un objeto Date en base a las partes
+          /*this.cliente.fechaAlta = new Date(
+            parseInt(partesFecha[0]),   // Año
+            parseInt(partesFecha[1]) - 1,  // Mes (0 basado, por eso se resta 1)
+            parseInt(partesFecha[2])    // Día
+          );*/
+        }
+
+        console.log("this.cliente.correo: " + this.cliente.correo)
+        console.log("this.cliente.fechaAlta: " + this.cliente.fechaAlta)
         this.clientDialog = true;
        // this.updateClient = true;
     }
 
-    deleteProduct(product: Product) {
+    /*deleteProduct(product: Product) {
         this.deleteProductDialog = true;
         this.cliente = { ...this.cliente };
-    }
+    }*/
 
-    eliminar(cliente:Cliente):void{
+    eliminar(cliente:Cliente2):void{
 
         console.log("item de cliente: " + cliente.id)
         
@@ -112,7 +135,7 @@ export class CrudComponent implements OnInit {
             }).then((result) => {
               if (result.isConfirmed) {
         
-                this._usuariosService.deleteUser(cliente.id).subscribe(
+                this._clientesService.borraCliente(cliente.id).subscribe(
                   response => {
                     this.clientes = this.clientes.filter(cli => cli !== cliente)
                     swal.fire(
@@ -131,7 +154,7 @@ export class CrudComponent implements OnInit {
       
           actualizaCliente():void{
             console.log('actualizaCliente con Id: ' + this.cliente.id)
-            this._usuariosService.updateUser(this.cliente).subscribe(
+            this._clientesService.updateCliente(this.cliente).subscribe(
               
               response => 
               {
@@ -139,7 +162,7 @@ export class CrudComponent implements OnInit {
             this.clientDialog = false;
             
                 swal.fire('Exito','Registro actualizado con exito','success')
-                this._usuariosService.getUsers().subscribe(
+                this._clientesService.getClientes().subscribe(
                     clientes => this.clientes = clientes
                     );
                
@@ -155,14 +178,14 @@ export class CrudComponent implements OnInit {
 
            public creaCliente():void{
 
-            this._usuariosService.saveUser(this.cliente).subscribe(
+            this._clientesService.creaCliente(this.cliente).subscribe(
               response => 
                 {
               
               this.clientDialog = false;
               
                   swal.fire('Exito','Se guardo cliente con exito','success')
-                  this._usuariosService.getUsers().subscribe(
+                  this._clientesService.getClientes().subscribe(
                       clientes => this.clientes = clientes
                       );
                  
@@ -173,19 +196,19 @@ export class CrudComponent implements OnInit {
           }
         
 
-    confirmDeleteSelected() {
+    /*confirmDeleteSelected() {
         this.deleteProductsDialog = false;
         this.clientes = this.clientes.filter(val => !this.selectedProducts.includes(val));
         this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Clientes Borrados', life: 3000 });
         this.selectedProducts = [];
-    }
+    }*/
 
-    confirmDelete() {
+    /*confirmDelete() {
         this.deleteProductDialog = false;
         this.products = this.products.filter(val => val.id !== this.cliente.id);
         this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Cliente Borrado', life: 3000 });
         this.cliente = {};
-    }
+    }*/
 
     hideDialog() {
         this.clientDialog = false;

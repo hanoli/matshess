@@ -4,14 +4,15 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import {Router, ActivatedRoute} from "@angular/router"; 
 
 import swal from 'sweetalert2';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
 
 import { MatTableDataSource } from '@angular/material/table';
 //import { FormGroup, FormControl,Validators  } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import {FormGroup,FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import { Cliente } from 'src/app/interface/Cliente';
+
+import { Cliente2 } from 'src/app/interface/cliente2';
 import { ClientesService } from 'src/app/service/clientes.service';
 
 
@@ -23,9 +24,9 @@ import { ClientesService } from 'src/app/service/clientes.service';
 })
 export class IngresaclienteComponent implements OnInit {
   item:boolean;
-  clientes: Cliente[];
-  cliente:Cliente = new Cliente()
-  bsModalRef: BsModalRef;
+  clientes: Cliente2[];
+  cliente:Cliente2 = new Cliente2()
+
   descripcionAlta:String;
   btnGuardar:boolean;
   pageIndex:number;
@@ -33,13 +34,13 @@ export class IngresaclienteComponent implements OnInit {
   length:number;
  
   displayedColumns: String[] = ['select','nombre','paterno','materno','direccion','telefono','correo','eliminar','editar'];//variables que se usan para armar la tabla con angular material
-  dataSource = new MatTableDataSource<Cliente>();
+  dataSource = new MatTableDataSource<Cliente2>();
 
   constructor(
     private router: Router,
     private activatedRoute:ActivatedRoute,
     private clienteService: ClientesService,
-    private bsModalService: BsModalService, 
+
     private idClienteService : ClientesService) { }
 
     @ViewChild(MatPaginator) 
@@ -121,7 +122,7 @@ export class IngresaclienteComponent implements OnInit {
   }*/
 
 
-  eliminar(cliente:Cliente):void{
+  eliminar(cliente:Cliente2):void{
 
     console.log("item de cliente: " + cliente.id)
     
@@ -170,14 +171,14 @@ export class IngresaclienteComponent implements OnInit {
     
       }
 
-      seleccionar(cliente:Cliente):void{
+      seleccionar(cliente:Cliente2):void{
        //  this.idClienteService.disparadorIdCliente.emit(cliente)
          this.onClose();
       }
 
   onClose(){
     
-    this.bsModalService.hide();
+
    }
 
    cancelar(){
@@ -212,7 +213,7 @@ export class IngresaclienteComponent implements OnInit {
     }
     }
 
-cargaCliente(cliente:Cliente):void{
+cargaCliente(cliente:Cliente2):void{
     this.descripcionAlta = "Edicion de cliente";
     this.btnGuardar = true;
     this.item=true;

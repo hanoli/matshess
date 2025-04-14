@@ -20,8 +20,8 @@ import { ClientesService } from 'src/app/service/clientes.service';
 import { ProductService } from 'src/app/service/product.service';
 import { Product } from 'src/app/model/product';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Cliente } from 'src/app/interface/Cliente';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Cliente2 } from 'src/app/interface/cliente2';
+
 import { CrudComponent } from '../crud/crud.component';
 import { IngresaclienteComponent } from '../../ingresaCliente/ingresacliente.component';
 
@@ -33,7 +33,7 @@ import { IngresaclienteComponent } from '../../ingresaCliente/ingresacliente.com
 })
 export class RecepcionEquipoComponent implements OnInit {
 
-   clientes: Cliente[] = [];
+   clientes: Cliente2[] = [];
       
       cols: any[] = [];
       selectedProducts: Product[] = [];
@@ -42,7 +42,7 @@ export class RecepcionEquipoComponent implements OnInit {
       submitted: boolean = false;
 
       folio:Folio = new Folio()
-      cliente:Cliente = new Cliente()
+      cliente:Cliente2 = new Cliente2()
       
       verSeleccion: String;
       verSeleccionMarca: String;
@@ -51,13 +51,13 @@ export class RecepcionEquipoComponent implements OnInit {
 
       selectedTipoEquipo:TipoEquipo = {id:0,tipoEquipo:''};
       selectedMarca:Marca = {id:0,marca:''};
-      bsModalRef: BsModalRef;
+
       formFolio: FormGroup;
       tiposEquipos = ['Laptop', 'Desktop', 'Impresora', 'Monitor'];  // Ejemplo de opciones para Tipo de equipo
       marcas = ['HP', 'Dell', 'Lenovo', 'Acer'];  // Ejemplo de opciones para Marca
 
       private overlayContainer: OverlayContainer
-      constructor(private fb: FormBuilder, private folioService: FolioService,private bsModalService: BsModalService,) {
+      constructor(private fb: FormBuilder, private folioService: FolioService) {
         const fecha = new Date();
       this.formFolio = this.fb.group({
       folio: [`F${fecha.getFullYear()}-${Math.floor(Math.random() * 10000)}`],  // Este será el consecutivo, lo podemos dejar vacío al inicio
@@ -160,7 +160,7 @@ capturarMarca(value) {
 }
 
 addClient(){
-  this.bsModalRef = this.bsModalService.show(CrudComponent,{class:"modal-lg"});
+ 
 }
 
 }

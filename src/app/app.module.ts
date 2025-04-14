@@ -18,17 +18,17 @@ import { ProductService } from './service/product.service';
 import { TooltipModule } from 'primeng/tooltip';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
+
 
 
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
-    imports: [AppRoutingModule, AppLayoutModule,OverlayModule, ModalModule.forRoot()   ],
+    imports: [AppRoutingModule, AppLayoutModule,OverlayModule   ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, provideAnimationsAsync(),BsModalService
+        PhotoService, ProductService, provideAnimationsAsync()
     ],
     bootstrap: [AppComponent],
 })

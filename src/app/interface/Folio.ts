@@ -1,4 +1,6 @@
-import { Cliente } from "./Cliente";
+import { Cliente2 } from 'src/app/interface/cliente2';
+
+
 
 
 export class Folio {
@@ -9,6 +11,6 @@ export class Folio {
   marca: String;
   modelo: String;
   numSerie: String;
-  cliente:Cliente;
+  cliente:Cliente2;
   comentarios:String;
 }

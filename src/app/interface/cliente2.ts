@@ -1,6 +1,6 @@
 import { Folio } from "./Folio";
 
-export class Cliente {
+export class Cliente2 {
     id: number;
     nombre: string;
     apellidoPat: string;
@@ -8,5 +8,7 @@ export class Cliente {
     direccion: string;
     telefono: string;
     correo: string;
+    fechaAlta:string;
     folios: Folio[]=[];
+    
   }

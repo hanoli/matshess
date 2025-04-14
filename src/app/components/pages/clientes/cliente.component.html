@@ -9,7 +9,7 @@
 
                         <button pButton pRipple label="" icon="pi pi-plus" class="p-button-success mr-2"  
                          pTooltip="Agregar Cliente" showDelay="1000" hideDelay="300" tooltipPosition="top" 
-                         (click)="nuevoUsuario()">
+                         (click)="nuevoCliente()">
                         </button>
                         <button pButton pRipple label="" icon="pi pi-trash" class="p-button-danger"
                         pTooltip="Eliminar Clientes" showDelay="1000" hideDelay="300" tooltipPosition="top" 
@@ -46,7 +46,8 @@
                         <th pSortableColumn="price">Materno <p-sortIcon field="price"></p-sortIcon></th>
                         <th pSortableColumn="category">Télefono <p-sortIcon field="category"></p-sortIcon></th>
                         <th pSortableColumn="rating">Correo <p-sortIcon field="rating"></p-sortIcon></th>
-                        <th pSortableColumn="inventoryStatus">Rol<p-sortIcon field="inventoryStatus"></p-sortIcon></th>
+                        <th pSortableColumn="inventoryStatus">Direccion<p-sortIcon field="inventoryStatus"></p-sortIcon></th>
+                        <th pSortableColumn="inventoryStatus">Fecha de Alta<p-sortIcon field="inventoryStatus"></p-sortIcon></th>
                         <th></th>
                     </tr>
                 </ng-template>
@@ -76,11 +77,14 @@
                         </td>
                         <td style="width:14%; min-width: 10rem;">
                             <span class="p-column-title">Correo</span>
-                            {{cliente.username}}
+                            {{cliente.correo}}
                             <!--<p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
                         </td>
-                        <td style="width:14%; min-width: 10rem;"><span class="p-column-title">Status</span>
-                            <span [class]="'cliente-badge status-' + (cliente.inventoryStatus ? cliente.inventoryStatus.toLowerCase() : '')">{{cliente.role}}</span>
+                        <td style="width:14%; min-width: 10rem;"><span class="p-column-title">Direccion</span>
+                            <span [class]="'cliente-badge status-' + (cliente.inventoryStatus ? cliente.inventoryStatus.toLowerCase() : '')">{{cliente.direccion}}</span>
+                        </td>
+                        <td style="width:14%; min-width: 10rem;"><span class="p-column-title">Fecha de Alta</span>
+                            <span [class]="'cliente-badge status-' + (cliente.inventoryStatus ? cliente.inventoryStatus.toLowerCase() : '')">{{cliente.fechaAlta}}</span>
                         </td>
                         <td>
                             <div class="flex">
@@ -93,44 +97,49 @@
             </p-table>
         </div>
 
-        <p-dialog [(visible)]="clientDialog" [style]="{width: '450px'}" header="Detalle de usuario" [modal]="true" class="p-fluid">
+        <p-dialog [(visible)]="clientDialog" [style]="{width: '450px'}" header="Datos del Cliente" [modal]="true" class="p-fluid">
             <ng-template pTemplate="content">
                 <!--<img [src]="'assets/demo/images/product/' + product.image" [alt]="product.image" width="150" class="mt-0 mx-auto mb-5 block shadow-2" *ngIf="product.image">-->
                 <div class="field">
                     <label for="name">Nombre</label>
                     <input type="text" pInputText id="name" [(ngModel)]="cliente.nombre" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.name}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.nombre">Name is required.</small>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.nombre">El Nombre es requerido.</small>
                 </div>
                 <div class="field">
                     <label for="name">Apellido Paterno</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="cliente.apellidoPat" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.name}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.apellidoPat">Name is required.</small>
+                    <input type="text" pInputText id="name" [(ngModel)]="cliente.apellidoPat" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.apellidoPat}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.apellidoPat">El Apellido Paterno es requerido.</small>
                 </div>
                 <div class="field">
                     <label for="name">Apellido Materno</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="cliente.apellidoMat" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.name}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.apellidoMat">Name is required.</small>
+                    <input type="text" pInputText id="name" [(ngModel)]="cliente.apellidoMat" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.apellidoMat}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.apellidoMat">El Apellido Materno es requerido.</small>
                 </div>
                 <div class="field">
                     <label for="name">Telefono</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="cliente.telefono" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.name}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.telefono">Name is required.</small>
+                    <input type="text" pInputText id="name" [(ngModel)]="cliente.telefono" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.telefono}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.telefono">El Telefono es requerido</small>
                 </div>
                 <div class="field">
                     <label for="name">Correo</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="cliente.username" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.name}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.correo">Name is required.</small>
+                    <input type="text" pInputText id="name" [(ngModel)]="cliente.correo" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.correo}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.correo">El Correo es requerido</small>
                 </div>
                 <div class="field">
-                    <label for="name">Contraseña</label>
-                    <input type="password" pInputText id="password" [(ngModel)]="cliente.password" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.password}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.password">La contraseña es requerida.</small>
+                    <label for="name">Direccion</label>
+                    <input type="direccion" pInputText id="direccion" [(ngModel)]="cliente.direccion" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.direccion}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.direccion">La Direccion es requerida.</small>
+
                 </div>
                 <div class="field">
-                    <label for="name">Rol</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="cliente.role" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.role}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.role">El rol es requerido.</small>
+                    <label for="fechaAlta">Fecha de Alta</label>
+                    <p-calendar [(ngModel)]="cliente.fechaAlta" id="fechaAlta" ></p-calendar>
+                    <!--<input type="fechaAlta" pInputText id="fechaAlta" [(ngModel)]="cliente.fechaAlta" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !cliente.fechaAlta}"/>-->
+                    <!-- Mensaje de error si la fecha es requerida y no está seleccionada -->
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !cliente.fechaAlta">La Fecha de alta es requerida.</small>
                 </div>
+                
+                
               
             </ng-template>
 
@@ -167,3 +176,4 @@
         </p-dialog>-->
     </div>
 </div>
+
