@@ -20,7 +20,7 @@ import { ClientesService } from 'src/app/service/clientes.service';
 import { ProductService } from 'src/app/service/product.service';
 import { Product } from 'src/app/model/product';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Cliente } from 'src/app/interface/Cliente';
+import {Cliente} from '../../../interface/Cliente';
 
 import { CrudComponent } from '../crud/crud.component';
 import { IngresaclienteComponent } from '../../ingresaCliente/ingresacliente.component';

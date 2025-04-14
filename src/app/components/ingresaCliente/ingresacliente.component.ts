@@ -11,7 +11,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import {FormGroup,FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import { Cliente } from 'src/app/interface/Cliente';
+
+import {Cliente} from '../../../interface/Cliente';
 import { ClientesService } from 'src/app/service/clientes.service';
 
 

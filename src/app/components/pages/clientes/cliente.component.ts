@@ -8,7 +8,7 @@ import { ClientesService } from 'src/app/service/clientes.service';
 import { ProductService } from 'src/app/service/product.service';
 import { Product } from 'src/app/model/product';
 import { DatePipe } from '@angular/common';
-import { Cliente } from 'src/app/interface/Cliente';
+import {Cliente} from '../../../interface/Cliente';
 
 
 

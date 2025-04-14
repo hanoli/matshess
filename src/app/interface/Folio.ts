@@ -1,4 +1,6 @@
-import { Cliente } from "./Cliente";
+import { Cliente } from "../model/cliente";
+
+
 
 
 export class Folio {

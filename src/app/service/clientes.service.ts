@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 
 import { Product, Role } from '../model/product';
 import { Folio } from '../interface/Folio';
-import { Cliente } from '../interface/Cliente';
+import {Cliente} from '../../../interface/Cliente';
 
 
 
